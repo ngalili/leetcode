@@ -18,6 +18,7 @@ class SingleLinkedList:
 
         self.head = None
         self.tail = None
+        return
     
     def list_length(self):
         "return the number of list items"
