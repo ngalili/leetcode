@@ -10,7 +10,7 @@ def twoSum_1(nums: List[int], target: int) -> List[int]:
             if nums[i] + nums[j] == target:
                 return i, j
 
-# optimized algorithm - referred to Internet resources
+# optimized algorithm - referred to Internet resources: using hash table 
 def twoSum_2(nums: List[int], target: int) -> List[int]:
     hash_tbl = {}
     for index, value in enumerate(nums):
