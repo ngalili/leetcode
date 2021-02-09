@@ -1,16 +1,37 @@
 # 146. LRU Cache
 # https://leetcode.com/problems/lru-cache/
 
+from collections import deque
+
+# [Not clearly understand]
 # Least Recently Used cache
 # for fast look ups, we will use hash maps
 # for fast removals, we will use double ended queue
 class LRUCache:
-
     def __init__(self, capacity: int):
-        
+        self.c = capacity
+        self.m = dict()
+        self.deq = deque()
+
     def get(self, key: int) -> int:
+        if key in self.m:
+            value = self.m[key]
+            self.deq.remove(key)
+            self.deq.append(key)
+            return value
+        else:
+            return -1
         
     def put(self, key: int, value: int) -> None:
+        if key not in self.m:
+            if len(self.deq) == self.c:
+                oldest = self.deq.popleft()
+                del self.m[oldest]
+        else:
+            self.deq.remove(key)
+        
+        self.m[key] = value
+        self.deq.append(key)
         
 
 # Your LRUCache object will be instantiated and called as such:
